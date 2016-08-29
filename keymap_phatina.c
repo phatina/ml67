@@ -16,7 +16,7 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KEYMAP(   // LAYER 1
       TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS,\
       TRNS, FN21, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS,      \
-      CAPS, TRNS, FN20, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS,       TRNS,      \
+      CAPS, TRNS, FN20, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS,       FN17,      \
       TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS,       TRNS, TRNS, FN16,\
       TRNS, TRNS, TRNS, TRNS,             TRNS,             TRNS, TRNS, TRNS, TRNS, TRNS, TRNS,\
       TRNS, TRNS                                                                               \
@@ -45,6 +45,7 @@ enum function_id {
     PROGRAMMING,
     TMUX,
     CTRL_ALT_DEL,
+    CTRL_ALT_ENTER,
     VIM_SAVE,
     VIM_QUIT,
 };
@@ -59,6 +60,7 @@ const uint16_t PROGMEM fn_actions[] = {
     [14] = ACTION_FUNCTION(TMUX),             // tmux bind prefix
     [15] = ACTION_FUNCTION(PROGRAMMING),      // Program the Teensy.
     [16] = ACTION_MACRO(CTRL_ALT_DEL),        // CTRL + ALT + DELETE
+    [17] = ACTION_MACRO(CTRL_ALT_ENTER),      // CTRL + ALT + ENTER
     [20] = ACTION_MACRO(VIM_SAVE),            // Save a file in VIM
     [21] = ACTION_MACRO(VIM_QUIT),            // Quit VIM
 };
@@ -92,6 +94,11 @@ const macro_t* action_get_macro(keyrecord_t* record, uint8_t id, uint8_t opt) {
         case CTRL_ALT_DEL:
             return (event.pressed ?
                     MACRO(D(LCTL), D(LALT), T(DEL), U(LALT), U(LCTL), END) :
+                    MACRO_NONE);
+
+        case CTRL_ALT_ENTER:
+            return (event.pressed ?
+                    MACRO(D(LCTL), D(LALT), T(ENT), U(LALT), U(LCTL), END) :
                     MACRO_NONE);
 
         case VIM_SAVE:
