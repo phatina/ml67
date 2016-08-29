@@ -22,19 +22,19 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       TRNS, TRNS                                                                               \
     ),
     KEYMAP(   // LAYER 2
-      TRNS, F1,   F2,   F3,   F4,   F5,   F6,   F7,   F8,   F9,   F10,  F11,  F12,  SYSREQ, NO, \
+      TRNS, F1,   F2,   F3,   F4,   F5,   F6,   F7,   F8,   F9,   F10,  F11,  F12,  VOLD, VOLU, \
       TRNS, NO,   UP,   NO,   NO,   NO,   NO,   NO,    NO,  NO,   NO,   NO,   NO,   NO,         \
       TRNS, LEFT, DOWN, RIGHT,NO,   NO,   NO,   NO,   NO,   NO,   NO,   NO,   NO,               \
       TRNS, NO,   NO,   NO,   NO,   NO,   NO,   NO,   NO,   NO,   NO,         TRNS, NO,   NO,   \
-      TRNS, TRNS, TRNS, TRNS,             SPC,              TRNS, TRNS, NO,   NO,   NO,   NO,   \
+      TRNS, TRNS, TRNS, TRNS,             SPC,              TRNS, TRNS, NO,   MPRV, MPLY, MNXT, \
       TRNS, TRNS                                                                                \
     ),
     KEYMAP(   // LAYER 3
-      FN15, F14,  F15,  NO,   NO,   NO,   NO,   MPRV, MPLY, MNXT, MUTE, VOLD, VOLU, NO,   EJCT, \
+      FN15, F1,   F2,   F3,   F4,   F5,   F6,   F7,   F8,   F9,   F10,  F11,  F12,  VOLD, VOLU, \
       TRNS, NO,   UP,   NO,   NO,   NO,   NO,   NO,   NO,   NO,   NO,   NO,   NO,   NO,         \
       TRNS, LEFT, DOWN, RIGHT,FN17, NO,   NO,   INS,  HOME, PGUP, BSPC, NO,         NO,         \
       TRNS, NO,   NO,   NO,   NO,   NO,   NO,   DEL,  END,  PGDN, NO,         TRNS, NO,   NO,   \
-      TRNS, TRNS, TRNS, TRNS,             SPC,              TRNS, TRNS, NO,   NO,   NO,   NO,   \
+      TRNS, TRNS, TRNS, TRNS,             SPC,              TRNS, TRNS, NO,   MPRV, MPLY, MNXT, \
       TRNS, TRNS                                                                                \
     ),
 };
