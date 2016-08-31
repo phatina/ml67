@@ -102,13 +102,15 @@ const macro_t* action_get_macro(keyrecord_t* record, uint8_t id, uint8_t opt) {
                     MACRO_NONE);
 
         case VIM_SAVE:
+            // Waiting is necessary due to NeoVIM
             return (event.pressed ?
-                    MACRO(T(ESC), D(LSFT), T(SCLN), U(LSFT), T(W), T(ENT), END) :
+                    MACRO(T(ESC), W(10), D(LSFT), T(SCLN), U(LSFT), T(W), T(ENT), END) :
                     MACRO_NONE);
 
         case VIM_QUIT:
+            // Waiting is necessary due to NeoVIM
             return (event.pressed ?
-                    MACRO(T(ESC), D(LSFT), T(SCLN), U(LSFT), T(Q), T(ENT), END) :
+                    MACRO(T(ESC), W(10), D(LSFT), T(SCLN), U(LSFT), T(Q), T(ENT), END) :
                     MACRO_NONE);
     }
 
