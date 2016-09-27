@@ -14,7 +14,7 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       FN4,  FN4                                                                                \
     ),
     KEYMAP(   // LAYER 1
-      TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS,\
+      TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, VOLD, VOLU,\
       TRNS, FN21, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS,      \
       CAPS, TRNS, FN20, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS,       FN17,      \
       TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS,       TRNS, TRNS, FN16,\
@@ -25,7 +25,7 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       TRNS, F1,   F2,   F3,   F4,   F5,   F6,   F7,   F8,   F9,   F10,  F11,  F12,  VOLD, VOLU, \
       TRNS, NO,   UP,   NO,   NO,   NO,   NO,   NO,    NO,  NO,   NO,   NO,   NO,   NO,         \
       TRNS, LEFT, DOWN, RIGHT,NO,   NO,   NO,   NO,   NO,   NO,   NO,   NO,   NO,               \
-      TRNS, NO,   NO,   NO,   NO,   NO,   NO,   NO,   NO,   NO,   NO,         TRNS, NO,   NO,   \
+      TRNS, NO,   NO,   NO,   NO,   NO,   NO,   NO,   NO,   NO,   NO,         TRNS, MSTP, NO,   \
       TRNS, TRNS, TRNS, TRNS,             SPC,              TRNS, TRNS, NO,   MPRV, MPLY, MNXT, \
       TRNS, TRNS                                                                                \
     ),
@@ -33,7 +33,7 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       FN15, F1,   F2,   F3,   F4,   F5,   F6,   F7,   F8,   F9,   F10,  F11,  F12,  VOLD, VOLU, \
       TRNS, NO,   UP,   NO,   NO,   NO,   NO,   NO,   NO,   NO,   NO,   NO,   NO,   NO,         \
       TRNS, LEFT, DOWN, RIGHT,FN17, NO,   NO,   INS,  HOME, PGUP, BSPC, NO,         NO,         \
-      TRNS, NO,   NO,   NO,   NO,   NO,   NO,   DEL,  END,  PGDN, NO,         TRNS, NO,   NO,   \
+      TRNS, NO,   NO,   NO,   NO,   NO,   NO,   DEL,  END,  PGDN, NO,         TRNS, MSTP, NO,   \
       TRNS, TRNS, TRNS, TRNS,             SPC,              TRNS, TRNS, NO,   MPRV, MPLY, MNXT, \
       TRNS, TRNS                                                                                \
     ),
