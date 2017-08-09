@@ -11,7 +11,7 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KEYMAP(   // LAYER 0: Default
       FN13, 1,    2,    3,    4,    5,    6,    7,    8,    9,    0,    MINS, EQL,  GRV,  BSLS,\
       TAB,  Q,    W,    E,    R,    T,    Y,    U,    I,    O,    P,    LBRC, RBRC, BSPC,      \
-      LCTL, A,    S,    D,    F,    G,    H,    J,    K,    L,    SCLN, QUOT,       ENT,       \
+      FN30, A,    S,    D,    F,    G,    H,    J,    K,    L,    SCLN, QUOT,       ENT,       \
       LSFT, Z,    X,    C,    V,    B,    N,    M,    COMM, DOT,  SLSH,       RSFT, UP,   DEL, \
       RCTL, LGUI,  LALT, FN2,             SPC,              FN3,  FN1, MENU, LEFT, DOWN,  RGHT,\
       NO,  NO                                                                                \
@@ -66,6 +66,7 @@ const action_t PROGMEM fn_actions[] = {
     [17] = ACTION_MACRO(CTRL_ALT_ENTER),      // CTRL + ALT + ENTER
     [20] = ACTION_MACRO(VIM_SAVE),            // Save a file in VIM
     [21] = ACTION_MACRO(VIM_QUIT),            // Quit VIM
+    [30] = ACTION_MODS_TAP_KEY(MOD_LCTL, KC_ENT) // Left CTRL and Enter
 };
 
 void action_function(keyrecord_t *record, uint8_t id, uint8_t opt) {
