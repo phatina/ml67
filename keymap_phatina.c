@@ -18,9 +18,9 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     KEYMAP(   // LAYER 1
       TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, VOLD, VOLU,\
-      TRNS, FN21, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS,      \
+      TRNS, FN21, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, FN23, TRNS, TRNS, TRNS, TRNS,      \
       CAPS, TRNS, FN20, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS,       FN17,      \
-      TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS,       TRNS, TRNS, FN16,\
+      TRNS, TRNS, TRNS, TRNS, TRNS, FN22, TRNS, TRNS, TRNS, TRNS, TRNS,       TRNS, TRNS, FN16,\
       TRNS, TRNS, TRNS, TRNS,             TRNS,             TRNS, TRNS, TRNS, TRNS, TRNS, TRNS,\
       TRNS, TRNS                                                                               \
     ),
@@ -48,19 +48,23 @@ enum function_id {
     PROGRAMMING,
     VIM_SAVE,
     VIM_QUIT,
+    VIM_FUZZY_FINDER_BUFFER,
+    VIM_FUZZY_FINDER_OPEN
 };
 
 // Fn action definition
 const action_t PROGMEM fn_actions[] = {
-    [1] = ACTION_LAYER_MOMENTARY(1),          // FN1 switch to Emacs layer
-    [2] = ACTION_LAYER_MOMENTARY(2),          // FN2 switch to layer 2
-    [3] = ACTION_LAYER_MOMENTARY(3),          // FN3 switch to layer 3
-    [4] = ACTION_LAYER_MOMENTARY(1),          // FN1 footswitch to Emacs layer
-    [13] = ACTION_FUNCTION(ESC),              // Special ESC key.
-    [15] = ACTION_FUNCTION(PROGRAMMING),      // Program the Teensy.
-    [20] = ACTION_MACRO(VIM_SAVE),            // Save a file in VIM
-    [21] = ACTION_MACRO(VIM_QUIT),            // Quit VIM
-    [30] = ACTION_MODS_TAP_KEY(MOD_LCTL, KC_ENT) // Left CTRL and Enter
+    [1] = ACTION_LAYER_MOMENTARY(1),              // FN1 switch to Emacs layer
+    [2] = ACTION_LAYER_MOMENTARY(2),              // FN2 switch to layer 2
+    [3] = ACTION_LAYER_MOMENTARY(3),              // FN3 switch to layer 3
+    [4] = ACTION_LAYER_MOMENTARY(1),              // FN1 footswitch to Emacs layer
+    [13] = ACTION_FUNCTION(ESC),                  // Special ESC key.
+    [15] = ACTION_FUNCTION(PROGRAMMING),          // Program the Teensy.
+    [20] = ACTION_MACRO(VIM_SAVE),                // Save a file in VIM
+    [21] = ACTION_MACRO(VIM_QUIT),                // Quit VIM
+    [22] = ACTION_MACRO(VIM_FUZZY_FINDER_BUFFER), // Fuzzy Finder switch buffer
+    [23] = ACTION_MACRO(VIM_FUZZY_FINDER_OPEN),   // Fuzzy Finder open buffer
+    [30] = ACTION_MODS_TAP_KEY(MOD_LCTL, KC_ENT)  // Left CTRL and Enter
 };
 
 void action_function(keyrecord_t *record, uint8_t id, uint8_t opt) {
@@ -95,6 +99,16 @@ const macro_t* action_get_macro(keyrecord_t* record, uint8_t id, uint8_t opt) {
             // Waiting is necessary due to NeoVIM
             return (event.pressed ?
                     MACRO(T(ESC), W(10), D(LSFT), T(SCLN), U(LSFT), T(Q), T(ENT), END) :
+                    MACRO_NONE);
+
+        case VIM_FUZZY_FINDER_BUFFER:
+            return (event.pressed ?
+                    MACRO(T(ESC), W(10), T(BSLS), T(B), END) :
+                    MACRO_NONE);
+
+        case VIM_FUZZY_FINDER_OPEN:
+            return (event.pressed ?
+                    MACRO(T(ESC), W(10), T(BSLS), T(O), END) :
                     MACRO_NONE);
     }
 
