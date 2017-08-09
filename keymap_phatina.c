@@ -46,9 +46,6 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 enum function_id {
     ESC,
     PROGRAMMING,
-    TMUX,
-    CTRL_ALT_DEL,
-    CTRL_ALT_ENTER,
     VIM_SAVE,
     VIM_QUIT,
 };
@@ -60,10 +57,7 @@ const action_t PROGMEM fn_actions[] = {
     [3] = ACTION_LAYER_MOMENTARY(3),          // FN3 switch to layer 3
     [4] = ACTION_LAYER_MOMENTARY(1),          // FN1 footswitch to Emacs layer
     [13] = ACTION_FUNCTION(ESC),              // Special ESC key.
-    [14] = ACTION_FUNCTION(TMUX),             // tmux bind prefix
     [15] = ACTION_FUNCTION(PROGRAMMING),      // Program the Teensy.
-    [16] = ACTION_MACRO(CTRL_ALT_DEL),        // CTRL + ALT + DELETE
-    [17] = ACTION_MACRO(CTRL_ALT_ENTER),      // CTRL + ALT + ENTER
     [20] = ACTION_MACRO(VIM_SAVE),            // Save a file in VIM
     [21] = ACTION_MACRO(VIM_QUIT),            // Quit VIM
     [30] = ACTION_MODS_TAP_KEY(MOD_LCTL, KC_ENT) // Left CTRL and Enter
@@ -75,10 +69,6 @@ void action_function(keyrecord_t *record, uint8_t id, uint8_t opt) {
     switch (id) {
         case ESC:
             special_esc(event.pressed);
-            break;
-
-        case TMUX:
-            tmux(event.pressed);
             break;
 
         case PROGRAMMING:
@@ -95,16 +85,6 @@ const macro_t* action_get_macro(keyrecord_t* record, uint8_t id, uint8_t opt) {
     keyevent_t event = record->event;
 
     switch (id) {
-        case CTRL_ALT_DEL:
-            return (event.pressed ?
-                    MACRO(D(LCTL), D(LALT), T(DEL), U(LALT), U(LCTL), END) :
-                    MACRO_NONE);
-
-        case CTRL_ALT_ENTER:
-            return (event.pressed ?
-                    MACRO(D(LCTL), D(LALT), T(ENT), U(LALT), U(LCTL), END) :
-                    MACRO_NONE);
-
         case VIM_SAVE:
             // Waiting is necessary due to NeoVIM
             return (event.pressed ?
