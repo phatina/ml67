@@ -1,3 +1,6 @@
+// AVR
+#include <util/delay.h>
+
 #include "keymap_common.h"
 #include "keymap_phatina_functions.c"
 #include "command.h"
@@ -51,7 +54,7 @@ enum function_id {
 };
 
 // Fn action definition
-const uint16_t PROGMEM fn_actions[] = {
+const action_t PROGMEM fn_actions[] = {
     [1] = ACTION_LAYER_MOMENTARY(1),          // FN1 switch to Emacs layer
     [2] = ACTION_LAYER_MOMENTARY(2),          // FN2 switch to layer 2
     [3] = ACTION_LAYER_MOMENTARY(3),          // FN3 switch to layer 3
